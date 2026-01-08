@@ -1,0 +1,449 @@
+================================================================================
+Test started at: 2026-01-04 14:50:55
+Log file: fp32_softmax.log
+================================================================================
+
+
+================================================================================
+SOFTMAX FP32 PRECISION TEST
+Ground Truth: softmax-fp64-cpu (PyTorch)
+Under Test: 1) softmax-fp32-cpu (PyTorch)
+            2) softmax-fp32-gpu (cuDNN)
+================================================================================
+
+================================================================================
+Test Case: Normal range [-10, 10]
+Shape: torch.Size([4, 128]), Range: [-1.2925e+01, 1.4170e+01]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  7.807910e-08
+  Mean Absolute Error: 3.981234e-10
+  Max Relative Error:  1.118891e-06
+  Mean Relative Error: 2.584399e-07
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  4.113019e-08
+  Mean Absolute Error: 3.478218e-10
+  Max Relative Error:  1.050356e-06
+  Mean Relative Error: 2.570689e-07
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Large positive [50, 100]
+Shape: torch.Size([4, 128]), Range: [5.0146e+01, 9.9895e+01]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  2.091323e-08
+  Mean Absolute Error: 4.742149e-10
+  Max Relative Error:  1.553623e-07
+  Mean Relative Error: 4.787238e-08
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  2.414833e-08
+  Mean Absolute Error: 4.350824e-10
+  Max Relative Error:  1.759909e-07
+  Mean Relative Error: 4.862708e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Large negative [-100, -50]
+Shape: torch.Size([4, 128]), Range: [-9.9923e+01, -5.0192e+01]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  3.434784e-08
+  Mean Absolute Error: 3.520167e-10
+  Max Relative Error:  1.839254e-07
+  Mean Relative Error: 4.885539e-08
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  3.434784e-08
+  Mean Absolute Error: 3.600093e-10
+  Max Relative Error:  1.692332e-07
+  Mean Relative Error: 4.786531e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Mixed extremes [-100, 100]
+Shape: torch.Size([4, 128]), Range: [-1.9163e+02, 1.4597e+02]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  7.721315e-08
+  Mean Absolute Error: 2.187906e-10
+  Max Relative Error:  1.194424e-07
+  Mean Relative Error: 2.526784e-09
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  7.721315e-08
+  Mean Absolute Error: 2.187144e-10
+  Max Relative Error:  1.300361e-07
+  Mean Relative Error: 2.319543e-09
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Very large positive [80, 120]
+Shape: torch.Size([4, 128]), Range: [8.0158e+01, 1.1988e+02]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  2.944271e-08
+  Mean Absolute Error: 3.873133e-10
+  Max Relative Error:  1.549851e-07
+  Mean Relative Error: 4.997535e-08
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  2.585947e-08
+  Mean Absolute Error: 3.621661e-10
+  Max Relative Error:  1.991333e-07
+  Mean Relative Error: 6.445108e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Near fp32 max
+Shape: torch.Size([32, 4]), Range: [1.0000e+30, 1.0000e+33]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  0.000000e+00
+  Mean Absolute Error: 0.000000e+00
+  Max Relative Error:  0.000000e+00
+  Mean Relative Error: 0.000000e+00
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  0.000000e+00
+  Mean Absolute Error: 0.000000e+00
+  Max Relative Error:  0.000000e+00
+  Mean Relative Error: 0.000000e+00
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: One dominant large value
+Shape: torch.Size([4, 128]), Range: [-1.0000e+01, 5.0000e+01]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  1.300242e-34
+  Mean Absolute Error: 1.290084e-34
+  Max Relative Error:  1.300241e-14
+  Mean Relative Error: 1.290083e-14
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  1.300242e-34
+  Mean Absolute Error: 1.290084e-34
+  Max Relative Error:  1.300241e-14
+  Mean Relative Error: 1.290083e-14
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: All equal values
+Shape: torch.Size([4, 128]), Range: [5.0000e+00, 5.0000e+00]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  0.000000e+00
+  Mean Absolute Error: 0.000000e+00
+  Max Relative Error:  0.000000e+00
+  Mean Relative Error: 0.000000e+00
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  0.000000e+00
+  Mean Absolute Error: 0.000000e+00
+  Max Relative Error:  0.000000e+00
+  Mean Relative Error: 0.000000e+00
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Small differences (1e-6)
+Shape: torch.Size([4, 128]), Range: [1.0000e+01, 1.0000e+01]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  2.910928e-10
+  Mean Absolute Error: 1.600721e-10
+  Max Relative Error:  3.726003e-08
+  Mean Relative Error: 2.048922e-08
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  7.566948e-10
+  Mean Absolute Error: 2.507933e-10
+  Max Relative Error:  9.685695e-08
+  Mean Relative Error: 3.210155e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Large sequence [2048]
+Shape: torch.Size([2, 2048]), Range: [-3.3865e+01, 3.2091e+01]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  2.037645e-08
+  Mean Absolute Error: 1.358163e-11
+  Max Relative Error:  2.036009e-06
+  Mean Relative Error: 5.898273e-07
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  2.037645e-08
+  Mean Absolute Error: 1.454865e-11
+  Max Relative Error:  2.097600e-06
+  Mean Relative Error: 5.943568e-07
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Alternating extremes
+Shape: torch.Size([4, 128]), Range: [-5.0000e+01, 5.0000e+01]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  5.812619e-46
+  Mean Absolute Error: 2.906309e-46
+  Max Relative Error:  5.812619e-26
+  Mean Relative Error: 2.906309e-26
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  5.812619e-46
+  Mean Absolute Error: 2.906309e-46
+  Max Relative Error:  5.812619e-26
+  Mean Relative Error: 2.906309e-26
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Exponential decay
+Shape: torch.Size([4, 128]), Range: [4.5400e-05, 1.0000e+00]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  1.416167e-09
+  Mean Absolute Error: 2.481527e-10
+  Max Relative Error:  1.057791e-07
+  Mean Relative Error: 3.141941e-08
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  1.435234e-09
+  Mean Absolute Error: 2.967866e-10
+  Max Relative Error:  1.419521e-07
+  Mean Relative Error: 3.786025e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Near-zero values [-1e-3, 1e-3]
+Shape: torch.Size([4, 128]), Range: [-2.8671e-03, 2.5650e-03]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  1.121213e-09
+  Mean Absolute Error: 3.330693e-10
+  Max Relative Error:  1.433247e-07
+  Mean Relative Error: 4.263075e-08
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  1.253656e-09
+  Mean Absolute Error: 3.422818e-10
+  Max Relative Error:  1.601257e-07
+  Mean Relative Error: 4.380998e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Attention with mask [16, 512]
+Shape: torch.Size([16, 512]), Range: [-1.0000e+04, 1.7696e+01]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  1.478318e-07
+  Mean Absolute Error: 1.160543e-10
+  Max Relative Error:  2.064028e-06
+  Mean Relative Error: 2.458719e-07
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  6.581999e-08
+  Mean Absolute Error: 1.013148e-10
+  Max Relative Error:  1.964414e-06
+  Mean Relative Error: 2.439641e-07
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Near fp32 precision limit
+Shape: torch.Size([32, 4]), Range: [1.6777e+07, 1.6777e+07]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  9.447664e-09
+  Mean Absolute Error: 2.793968e-09
+  Max Relative Error:  3.017139e-08
+  Mean Relative Error: 1.955361e-08
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  9.447664e-09
+  Mean Absolute Error: 3.253768e-09
+  Max Relative Error:  8.901406e-08
+  Mean Relative Error: 4.897494e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Gradient-like values [1e-4, 1e-2]
+Shape: torch.Size([4, 128]), Range: [1.1781e-04, 1.0097e-02]
+================================================================================
+
+softmax-fp32-cpu:
+  Max Absolute Error:  8.955256e-10
+  Mean Absolute Error: 2.739625e-10
+  Max Relative Error:  1.144942e-07
+  Mean Relative Error: 3.505660e-08
+  Inf Count:           0
+  NaN Count:           0
+
+softmax-fp32-gpu (cuDNN):
+  Max Absolute Error:  1.184939e-09
+  Mean Absolute Error: 3.315548e-10
+  Max Relative Error:  1.514736e-07
+  Mean Relative Error: 4.243687e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+SUMMARY
+================================================================================
+
+softmax-fp32-cpu:
+  Total test cases: 16
+  Max absolute error across all cases: 1.478318e-07
+  Min absolute error across all cases: 0.000000e+00
+  Avg absolute error across all cases: 2.633599e-08
+  Median absolute error: 5.431915e-09
+  Std absolute error: 4.016195e-08
+  95th percentile absolute error: 9.551726e-08
+  Max relative error across all cases: 2.064028e-06
+  Avg relative error across all cases: 3.914795e-07
+  Median relative error: 1.169683e-07
+  Avg of mean absolute errors: 3.605825e-10
+  Avg of mean relative errors: 8.703242e-08
+  Total Inf count: 0
+  Total NaN count: 0
+
+  Worst absolute error case: Attention with mask [16, 512]
+    Error: 1.478318e-07
+  Worst relative error case: Attention with mask [16, 512]
+    Error: 2.064028e-06
+
+softmax-fp32-gpu (cuDNN):
+  Total test cases: 16
+  Max absolute error across all cases: 7.721315e-08
+  Min absolute error across all cases: 0.000000e+00
+  Avg absolute error across all cases: 1.893585e-08
+  Median absolute error: 5.441449e-09
+  Std absolute error: 2.396673e-08
+  95th percentile absolute error: 6.866828e-08
+  Max relative error across all cases: 2.097600e-06
+  Avg relative error across all cases: 4.016366e-07
+  Median relative error: 1.467128e-07
+  Avg of mean absolute errors: 3.946776e-10
+  Avg of mean relative errors: 9.148978e-08
+  Total Inf count: 0
+  Total NaN count: 0
+
+  Worst absolute error case: Mixed extremes [-100, 100]
+    Error: 7.721315e-08
+  Worst relative error case: Large sequence [2048]
+    Error: 2.097600e-06
+
+================================================================================
+OVERALL METRICS - COMPARISON
+================================================================================
+
+Comparing 16 test cases
+
+--- Absolute Error Comparison ---
+CPU - Overall Max: 1.478318e-07, Overall Avg: 2.633599e-08
+GPU - Overall Max: 7.721315e-08, Overall Avg: 1.893585e-08
+Difference (GPU - CPU):
+  Max difference: 3.235100e-09
+  Mean difference: -7.400143e-09
+  Median difference: 0.000000e+00
+  GPU better: 3/16 cases
+  GPU worse: 5/16 cases
+  GPU equal: 8/16 cases
+
+--- Relative Error Comparison ---
+CPU - Overall Max: 2.064028e-06, Overall Avg: 3.914795e-07
+GPU - Overall Max: 2.097600e-06, Overall Avg: 4.016366e-07
+Difference (GPU - CPU):
+  Max difference: 6.159086e-08
+  Mean difference: 1.015708e-08
+
+--- Mean Error Comparison ---
+CPU - Avg of mean abs errors: 3.605825e-10
+GPU - Avg of mean abs errors: 3.946776e-10
+
+--- Numerical Stability ---
+CPU - Total Infs: 0, Total NaNs: 0
+GPU - Total Infs: 0, Total NaNs: 0
+
+--- Error Distribution (Max Absolute Errors) ---
+Threshold       CPU Count       GPU Count      
+< 1e-10         4               4              
+< 1e-09         6               5              
+< 1e-08         9               9              
+< 1e-07         15              16             
+< 1e-06         16              16             
+< 1e-05         16              16             
+< 1e-04         16              16             
+
+--- Overall Assessment ---
+✓ GPU implementation has LOWER average max absolute error by 28.10%
+= Both implementations have equal numerical stability
+
+Overall Precision Grade: VERY GOOD (max error: 1.478318e-07)
+
+================================================================================
+
+================================================================================
+Test completed at: 2026-01-04 14:50:55
+Results saved to: fp32_softmax.log
+================================================================================

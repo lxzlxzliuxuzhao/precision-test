@@ -1,0 +1,713 @@
+================================================================================
+Test started at: 2026-01-04 18:23:59
+Log file: fp32_rmsnorm.log
+================================================================================
+
+
+================================================================================
+RMSNORM FP32 PRECISION TEST
+Ground Truth: rmsnorm-fp64-cpu (PyTorch)
+Under Test: 1) rmsnorm-fp32-cpu (PyTorch)
+            2) rmsnorm-fp32-gpu
+================================================================================
+
+================================================================================
+Test Case: Normal distribution N(0,1)
+Shape: torch.Size([4, 128, 768]), Range: [-4.5905e+00, 4.6291e+00]
+Mean: -1.4094e-03, Std: 1.0018e+00
+RMS: 1.0018e+00
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  5.253064e-07
+  Mean Absolute Error: 3.053119e-08
+  Max Relative Error:  2.063434e-07
+  Mean Relative Error: 3.821449e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  6.417045e-07
+  Mean Absolute Error: 2.949164e-08
+  Max Relative Error:  1.702468e-07
+  Mean Relative Error: 3.695744e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Large positive [50, 100]
+Shape: torch.Size([4, 128, 768]), Range: [5.0000e+01, 1.0000e+02]
+Mean: 7.4993e+01, Std: 1.4427e+01
+RMS: 7.6368e+01
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  2.005142e-07
+  Mean Absolute Error: 3.920572e-08
+  Max Relative Error:  1.705927e-07
+  Mean Relative Error: 3.971151e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  2.029898e-07
+  Mean Absolute Error: 3.765352e-08
+  Max Relative Error:  1.673430e-07
+  Mean Relative Error: 3.812946e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Large negative [-100, -50]
+Shape: torch.Size([4, 128, 768]), Range: [-1.0000e+02, -5.0000e+01]
+Mean: -7.4961e+01, Std: 1.4426e+01
+RMS: 7.6337e+01
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  2.148404e-07
+  Mean Absolute Error: 3.905265e-08
+  Max Relative Error:  1.766742e-07
+  Mean Relative Error: 3.955770e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  2.134646e-07
+  Mean Absolute Error: 3.786760e-08
+  Max Relative Error:  1.770680e-07
+  Mean Relative Error: 3.834431e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Mixed extremes [-100, 100]
+Shape: torch.Size([4, 128, 768]), Range: [-2.2994e+02, 2.3016e+02]
+Mean: -2.9653e-02, Std: 5.0053e+01
+RMS: 5.0053e+01
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  4.317117e-07
+  Mean Absolute Error: 2.737670e-08
+  Max Relative Error:  1.514283e-07
+  Mean Relative Error: 3.431912e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  5.308118e-07
+  Mean Absolute Error: 2.864757e-08
+  Max Relative Error:  1.612236e-07
+  Mean Relative Error: 3.592652e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Very small RMS (1e-7)
+Shape: torch.Size([4, 128, 768]), Range: [-4.8661e-07, 4.6679e-07]
+Mean: 1.5074e-11, Std: 9.9945e-08
+RMS: 9.9945e-08
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  3.413309e-11
+  Mean Absolute Error: 3.427270e-12
+  Max Relative Error:  1.022705e-07
+  Mean Relative Error: 4.292845e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  3.010262e-11
+  Mean Absolute Error: 3.303336e-12
+  Max Relative Error:  1.004103e-07
+  Mean Relative Error: 4.137379e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Near-zero [-1e-3, 1e-3]
+Shape: torch.Size([4, 128, 768]), Range: [-4.3347e-03, 4.4615e-03]
+Mean: -7.1499e-07, Std: 9.9774e-04
+RMS: 9.9774e-04
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  2.815654e-07
+  Mean Absolute Error: 1.905877e-08
+  Max Relative Error:  1.414802e-07
+  Mean Relative Error: 3.382175e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  3.758322e-07
+  Mean Absolute Error: 2.067028e-08
+  Max Relative Error:  1.594759e-07
+  Mean Relative Error: 3.666001e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: All equal values
+Shape: torch.Size([4, 128, 768]), Range: [5.0000e+00, 5.0000e+00]
+Mean: 5.0000e+00, Std: 0.0000e+00
+RMS: 5.0000e+00
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  2.000000e-08
+  Mean Absolute Error: 2.000000e-08
+  Max Relative Error:  2.000000e-08
+  Mean Relative Error: 2.000000e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  1.588139e-07
+  Mean Absolute Error: 1.588139e-07
+  Max Relative Error:  1.588139e-07
+  Mean Relative Error: 1.588139e-07
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Large hidden size [4096]
+Shape: torch.Size([2, 64, 4096]), Range: [-9.0322e+00, 8.6799e+00]
+Mean: -1.5895e-03, Std: 2.0009e+00
+RMS: 2.0009e+00
+Weight shape: torch.Size([4096])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  5.627862e-07
+  Mean Absolute Error: 2.973166e-08
+  Max Relative Error:  1.731598e-07
+  Mean Relative Error: 3.729623e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  8.677253e-07
+  Mean Absolute Error: 4.172300e-08
+  Max Relative Error:  2.412297e-07
+  Mean Relative Error: 5.232514e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Near fp32 precision limit
+Shape: torch.Size([4, 128, 768]), Range: [1.6777e+07, 1.6777e+07]
+Mean: 1.6777e+07, Std: 1.0931e+00
+RMS: 1.6777e+07
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  1.039977e-08
+  Mean Absolute Error: 4.023906e-09
+  Max Relative Error:  1.039977e-08
+  Mean Relative Error: 4.023906e-09
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  1.178899e-07
+  Mean Absolute Error: 1.047283e-08
+  Max Relative Error:  1.178899e-07
+  Mean Relative Error: 1.047283e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Non-trivial weight
+Shape: torch.Size([4, 128, 768]), Range: [-2.2658e+01, 2.2580e+01]
+Mean: 9.5880e-03, Std: 5.0007e+00
+RMS: 5.0007e+00
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  2.093893e-06
+  Mean Absolute Error: 5.601116e-08
+  Max Relative Error:  1.755811e-07
+  Mean Relative Error: 4.028517e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  2.699177e-06
+  Mean Absolute Error: 6.887913e-08
+  Max Relative Error:  2.259290e-07
+  Mean Relative Error: 4.957413e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Extreme weight (100)
+Shape: torch.Size([4, 128, 768]), Range: [-4.7672e+00, 5.1051e+00]
+Mean: -3.3390e-03, Std: 9.9946e-01
+RMS: 9.9946e-01
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  5.470203e-05
+  Mean Absolute Error: 3.096015e-06
+  Max Relative Error:  2.070900e-07
+  Mean Relative Error: 3.880317e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  6.023832e-05
+  Mean Absolute Error: 3.500735e-06
+  Max Relative Error:  2.174099e-07
+  Mean Relative Error: 4.389157e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Small weight (1e-5)
+Shape: torch.Size([4, 128, 768]), Range: [-4.5980e+01, 4.3779e+01]
+Mean: -3.2836e-03, Std: 1.0007e+01
+RMS: 1.0007e+01
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  5.469359e-12
+  Mean Absolute Error: 3.085110e-13
+  Max Relative Error:  1.773818e-07
+  Mean Relative Error: 3.863204e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  5.839932e-12
+  Mean Absolute Error: 3.231945e-13
+  Max Relative Error:  1.911070e-07
+  Mean Relative Error: 4.046699e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Input with outliers
+Shape: torch.Size([4, 128, 768]), Range: [-1.0000e+03, 1.0000e+03]
+Mean: 2.2875e-03, Std: 2.4669e+00
+RMS: 2.4669e+00
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  9.861326e-07
+  Mean Absolute Error: 3.148525e-08
+  Max Relative Error:  2.026461e-07
+  Mean Relative Error: 3.963199e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  1.504495e-06
+  Mean Absolute Error: 3.095527e-08
+  Max Relative Error:  1.818862e-07
+  Mean Relative Error: 3.891329e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Gradient-like [1e-4, 1e-2]
+Shape: torch.Size([4, 128, 768]), Range: [1.0001e-04, 1.0100e-02]
+Mean: 5.0958e-03, Std: 2.8895e-03
+RMS: 5.8580e-03
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  2.634647e-07
+  Mean Absolute Error: 3.008489e-08
+  Max Relative Error:  1.769728e-07
+  Mean Relative Error: 3.519876e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  2.549662e-07
+  Mean Absolute Error: 3.297237e-08
+  Max Relative Error:  1.760822e-07
+  Mean Relative Error: 3.858047e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Long sequence [2048]
+Shape: torch.Size([2, 2048, 768]), Range: [-1.5728e+01, 1.5554e+01]
+Mean: 1.4984e-03, Std: 2.9998e+00
+RMS: 2.9998e+00
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  5.056490e-07
+  Mean Absolute Error: 2.873223e-08
+  Max Relative Error:  1.866275e-07
+  Mean Relative Error: 3.600051e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  4.832588e-07
+  Mean Absolute Error: 2.945601e-08
+  Max Relative Error:  1.795319e-07
+  Mean Relative Error: 3.691921e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Exponential distribution
+Shape: torch.Size([4, 128, 768]), Range: [8.1507e-05, 5.0952e+01]
+Mean: 7.9837e+00, Std: 6.0367e+00
+RMS: 1.0009e+01
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  4.432754e-07
+  Mean Absolute Error: 3.064404e-08
+  Max Relative Error:  1.708564e-07
+  Mean Relative Error: 3.847496e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  4.242607e-07
+  Mean Absolute Error: 2.828623e-08
+  Max Relative Error:  1.522076e-07
+  Mean Relative Error: 3.547049e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Mixed feature magnitude
+Shape: torch.Size([4, 128, 768]), Range: [-4.4912e+01, 4.4173e+01]
+Mean: 1.0656e-02, Std: 7.0694e+00
+RMS: 7.0694e+00
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  5.764781e-07
+  Mean Absolute Error: 1.998227e-08
+  Max Relative Error:  1.636360e-07
+  Mean Relative Error: 3.530065e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  4.897428e-07
+  Mean Absolute Error: 1.749112e-08
+  Max Relative Error:  1.451080e-07
+  Mean Relative Error: 3.089759e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Very large [1e6, 1e7]
+Shape: torch.Size([4, 128, 768]), Range: [1.0000e+06, 1.0000e+07]
+Mean: 5.5024e+06, Std: 2.5984e+06
+RMS: 6.0851e+06
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  2.230177e-07
+  Mean Absolute Error: 3.252165e-08
+  Max Relative Error:  1.568981e-07
+  Mean Relative Error: 3.597813e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  2.357006e-07
+  Mean Absolute Error: 3.309975e-08
+  Max Relative Error:  1.711489e-07
+  Mean Relative Error: 3.660914e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Negative weight
+Shape: torch.Size([4, 128, 768]), Range: [-2.4373e+01, 2.1746e+01]
+Mean: 4.2015e-03, Std: 4.9985e+00
+RMS: 4.9985e+00
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  1.028803e-06
+  Mean Absolute Error: 6.478076e-08
+  Max Relative Error:  1.929961e-07
+  Mean Relative Error: 4.059371e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  1.094670e-06
+  Mean Absolute Error: 7.424612e-08
+  Max Relative Error:  1.737713e-07
+  Mean Relative Error: 4.650012e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Single batch [1, 512, 768]
+Shape: torch.Size([1, 512, 768]), Range: [-9.2593e+00, 9.4042e+00]
+Mean: 4.4878e-03, Std: 1.9983e+00
+RMS: 1.9983e+00
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  5.749084e-07
+  Mean Absolute Error: 2.993153e-08
+  Max Relative Error:  1.703369e-07
+  Mean Relative Error: 3.749518e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  4.718579e-07
+  Mean Absolute Error: 2.812235e-08
+  Max Relative Error:  1.742696e-07
+  Mean Relative Error: 3.524613e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: All zeros (edge case)
+Shape: torch.Size([4, 128, 768]), Range: [0.0000e+00, 0.0000e+00]
+Mean: 0.0000e+00, Std: 0.0000e+00
+RMS: 0.0000e+00
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  0.000000e+00
+  Mean Absolute Error: 0.000000e+00
+  Max Relative Error:  0.000000e+00
+  Mean Relative Error: 0.000000e+00
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  0.000000e+00
+  Mean Absolute Error: 0.000000e+00
+  Max Relative Error:  0.000000e+00
+  Mean Relative Error: 0.000000e+00
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: One dominant feature dimension
+Shape: torch.Size([4, 128, 768]), Range: [-4.6285e-03, 1.0000e+02]
+Mean: 1.3021e-01, Std: 3.6061e+00
+RMS: 3.6084e+00
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  1.804812e-06
+  Mean Absolute Error: 2.139002e-09
+  Max Relative Error:  1.351214e-07
+  Mean Relative Error: 6.984390e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  4.052869e-07
+  Mean Absolute Error: 3.647327e-10
+  Max Relative Error:  6.393685e-08
+  Mean Relative Error: 2.155700e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: High precision (1e-6 noise)
+Shape: torch.Size([4, 128, 768]), Range: [1.0000e+01, 1.0000e+01]
+Mean: 1.0000e+01, Std: 1.0378e-06
+RMS: 1.0000e+01
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  6.572224e-08
+  Mean Absolute Error: 1.857135e-08
+  Max Relative Error:  6.572223e-08
+  Mean Relative Error: 1.857135e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  1.455017e-07
+  Mean Absolute Error: 7.108567e-08
+  Max Relative Error:  1.455017e-07
+  Mean Relative Error: 7.108567e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Alternating signs
+Shape: torch.Size([4, 128, 768]), Range: [-2.6240e+01, 2.3385e+01]
+Mean: 2.7563e-03, Std: 5.0017e+00
+RMS: 5.0017e+00
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  6.083634e-07
+  Mean Absolute Error: 3.350499e-08
+  Max Relative Error:  1.914141e-07
+  Mean Relative Error: 4.195674e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  6.083634e-07
+  Mean Absolute Error: 3.573766e-08
+  Max Relative Error:  1.766602e-07
+  Mean Relative Error: 4.474037e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Near eps values (1e-7)
+Shape: torch.Size([4, 128, 768]), Range: [-4.5648e-07, 4.4258e-07]
+Mean: -2.8698e-10, Std: 9.9993e-08
+RMS: 9.9993e-08
+Weight shape: torch.Size([768])
+================================================================================
+
+rmsnorm-fp32-cpu:
+  Max Absolute Error:  3.106869e-11
+  Mean Absolute Error: 3.420118e-12
+  Max Relative Error:  1.022338e-07
+  Mean Relative Error: 4.284560e-08
+  Inf Count:           0
+  NaN Count:           0
+
+rmsnorm-fp32-gpu:
+  Max Absolute Error:  3.106869e-11
+  Mean Absolute Error: 3.294477e-12
+  Max Relative Error:  1.005003e-07
+  Mean Relative Error: 4.127398e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+SUMMARY
+================================================================================
+
+rmsnorm-fp32-gpu:
+  Total test cases: 25
+  Max absolute error across all cases: 6.023832e-05
+  Min absolute error across all cases: 0.000000e+00
+  Avg absolute error across all cases: 2.886596e-06
+  Median absolute error: 4.052869e-07
+  Std absolute error: 1.172068e-05
+  95th percentile absolute error: 2.460240e-06
+  Max relative error across all cases: 2.412297e-07
+  Avg relative error across all cases: 1.571501e-07
+  Median relative error: 1.702468e-07
+  Avg of mean absolute errors: 1.726711e-07
+  Avg of mean relative errors: 4.242918e-08
+  Total Inf count: 0
+  Total NaN count: 0
+
+  Worst absolute error case: Extreme weight (100)
+    Error: 6.023832e-05
+  Worst relative error case: Large hidden size [4096]
+    Error: 2.412297e-07
+
+rmsnorm-fp32-cpu:
+  Total test cases: 25
+  Max absolute error across all cases: 5.470203e-05
+  Min absolute error across all cases: 0.000000e+00
+  Avg absolute error across all cases: 2.644950e-06
+  Median absolute error: 4.317117e-07
+  Std absolute error: 1.063888e-05
+  95th percentile absolute error: 2.036077e-06
+  Max relative error across all cases: 2.070900e-07
+  Avg relative error across all cases: 1.451145e-07
+  Median relative error: 1.705927e-07
+  Avg of mean absolute errors: 1.473357e-07
+  Avg of mean relative errors: 3.517940e-08
+  Total Inf count: 0
+  Total NaN count: 0
+
+  Worst absolute error case: Extreme weight (100)
+    Error: 5.470203e-05
+  Worst relative error case: Extreme weight (100)
+    Error: 2.070900e-07
+
+================================================================================
+OVERALL METRICS - COMPARISON
+================================================================================
+
+Comparing 25 test cases
+
+--- Absolute Error Comparison ---
+CPU - Overall Max: 5.470203e-05, Overall Avg: 2.644950e-06
+GPU - Overall Max: 6.023832e-05, Overall Avg: 2.886596e-06
+Difference (GPU - CPU):
+  Max difference: 5.536295e-06
+  Mean difference: 2.416464e-07
+  Median difference: 2.475622e-09
+  GPU better: 8/25 cases
+  GPU worse: 14/25 cases
+  GPU equal: 3/25 cases
+
+--- Relative Error Comparison ---
+CPU - Overall Max: 2.070900e-07, Overall Avg: 1.451145e-07
+GPU - Overall Max: 2.412297e-07, Overall Avg: 1.571501e-07
+Difference (GPU - CPU):
+  Max difference: 1.388139e-07
+  Mean difference: 1.203554e-08
+
+--- Mean Error Comparison ---
+CPU - Avg of mean abs errors: 1.473357e-07
+GPU - Avg of mean abs errors: 1.726711e-07
+
+--- Numerical Stability ---
+CPU - Total Infs: 0, Total NaNs: 0
+GPU - Total Infs: 0, Total NaNs: 0
+
+--- Error Distribution (Max Absolute Errors) ---
+Threshold       CPU Count       GPU Count      
+< 1e-10         4               4              
+< 1e-09         4               4              
+< 1e-08         4               4              
+< 1e-07         7               4              
+< 1e-06         21              21             
+< 1e-05         24              24             
+< 1e-04         25              25             
+
+--- Overall Assessment ---
+✗ GPU implementation has HIGHER average max absolute error by 9.14%
+= Both implementations have equal numerical stability
+
+Overall Precision Grade: ACCEPTABLE (max error: 6.023832e-05)
+
+================================================================================
+
+================================================================================
+Test completed at: 2026-01-04 18:24:00
+Results saved to: fp32_rmsnorm.log
+================================================================================

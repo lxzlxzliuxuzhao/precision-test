@@ -1,0 +1,713 @@
+================================================================================
+Test started at: 2026-01-04 17:24:00
+Log file: fp32_crossentropyloss.log
+================================================================================
+
+
+================================================================================
+CROSS ENTROPY LOSS FP32 PRECISION TEST
+Ground Truth: crossentropy-fp64-cpu (PyTorch)
+Under Test: 1) crossentropy-fp32-cpu (PyTorch)
+            2) crossentropy-fp32-gpu (cuDNN)
+================================================================================
+
+================================================================================
+Test Case: Normal logits N(0,2)
+Logits shape: torch.Size([16, 50000]), Range: [-9.2176e+00, 9.6604e+00]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 1.337728e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  1.990524e-07
+  Mean Absolute Error: 1.990524e-07
+  Max Relative Error:  1.487989e-08
+  Mean Relative Error: 1.487989e-08
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  1.990524e-07
+  Mean Absolute Error: 1.990524e-07
+  Max Relative Error:  1.487989e-08
+  Mean Relative Error: 1.487989e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Large positive logits [50,100]
+Logits shape: torch.Size([16, 50000]), Range: [5.0000e+01, 1.0000e+02]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 2.393370e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  7.370584e-07
+  Mean Absolute Error: 7.370584e-07
+  Max Relative Error:  3.079584e-08
+  Mean Relative Error: 3.079584e-08
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  1.170290e-06
+  Mean Absolute Error: 1.170290e-06
+  Max Relative Error:  4.889717e-08
+  Mean Relative Error: 4.889717e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Large negative logits [-100,-50]
+Logits shape: torch.Size([16, 50000]), Range: [-1.0000e+02, -5.0000e+01]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 3.646439e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  1.376137e-06
+  Mean Absolute Error: 1.376137e-06
+  Max Relative Error:  3.773919e-08
+  Mean Relative Error: 3.773919e-08
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  1.376137e-06
+  Mean Absolute Error: 1.376137e-06
+  Max Relative Error:  3.773919e-08
+  Mean Relative Error: 3.773919e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Mixed extreme logits
+Logits shape: torch.Size([16, 50000]), Range: [-1.3548e+02, 1.3603e+02]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 1.084738e+02
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  5.769329e-06
+  Mean Absolute Error: 5.769329e-06
+  Max Relative Error:  5.318638e-08
+  Mean Relative Error: 5.318638e-08
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  5.769329e-06
+  Mean Absolute Error: 5.769329e-06
+  Max Relative Error:  5.318638e-08
+  Mean Relative Error: 5.318638e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: One dominant logit per sample
+Logits shape: torch.Size([16, 50000]), Range: [-4.6179e-01, 5.0000e+01]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 5.000897e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  3.585195e-06
+  Mean Absolute Error: 3.585195e-06
+  Max Relative Error:  7.169105e-08
+  Mean Relative Error: 7.169105e-08
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  3.585195e-06
+  Mean Absolute Error: 3.585195e-06
+  Max Relative Error:  7.169105e-08
+  Mean Relative Error: 7.169105e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: All equal logits
+Logits shape: torch.Size([16, 50000]), Range: [5.0000e+00, 5.0000e+00]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 1.081978e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  1.579725e-07
+  Mean Absolute Error: 1.579725e-07
+  Max Relative Error:  1.460035e-08
+  Mean Relative Error: 1.460035e-08
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  1.579725e-07
+  Mean Absolute Error: 1.579725e-07
+  Max Relative Error:  1.460035e-08
+  Mean Relative Error: 1.460035e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Near-zero logits [-1e-3,1e-3]
+Logits shape: torch.Size([16, 50000]), Range: [-4.7672e-03, 4.8098e-03]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 1.081998e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  1.267471e-06
+  Mean Absolute Error: 1.267471e-06
+  Max Relative Error:  1.171417e-07
+  Mean Relative Error: 1.171417e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  1.267471e-06
+  Mean Absolute Error: 1.267471e-06
+  Max Relative Error:  1.171417e-07
+  Mean Relative Error: 1.171417e-07
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Sequence prediction [batch, seq, vocab]
+Logits shape: torch.Size([16, 128, 50000]), Range: [-2.7345e+01, 2.7044e+01]
+Targets shape: torch.Size([16, 128]), Unique classes: 2010
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 2.216680e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  7.326534e-06
+  Mean Absolute Error: 7.326534e-06
+  Max Relative Error:  3.305183e-07
+  Mean Relative Error: 3.305183e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  1.604488e-06
+  Mean Absolute Error: 1.604488e-06
+  Max Relative Error:  7.238247e-08
+  Mean Relative Error: 7.238247e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Large vocabulary [100k]
+Logits shape: torch.Size([8, 100000]), Range: [-1.3868e+01, 1.3399e+01]
+Targets shape: torch.Size([8]), Unique classes: 8
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 1.702623e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  6.423780e-06
+  Mean Absolute Error: 6.423780e-06
+  Max Relative Error:  3.772873e-07
+  Mean Relative Error: 3.772873e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  1.205615e-06
+  Mean Absolute Error: 1.205615e-06
+  Max Relative Error:  7.080926e-08
+  Mean Relative Error: 7.080926e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Small vocabulary [100]
+Logits shape: torch.Size([16, 100]), Range: [-1.1023e+01, 8.6942e+00]
+Targets shape: torch.Size([16]), Unique classes: 13
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 8.283945e+00
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  9.537632e-07
+  Mean Absolute Error: 9.537632e-07
+  Max Relative Error:  1.151339e-07
+  Mean Relative Error: 1.151339e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  8.886758e-11
+  Mean Absolute Error: 8.886758e-11
+  Max Relative Error:  1.072769e-11
+  Mean Relative Error: 1.072769e-11
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Near fp32 precision limit
+Logits shape: torch.Size([16, 50000]), Range: [1.6777e+07, 1.6777e+07]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 1.144124e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  1.715497e-05
+  Mean Absolute Error: 1.715497e-05
+  Max Relative Error:  1.499398e-06
+  Mean Relative Error: 1.499398e-06
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  9.425022e-07
+  Mean Absolute Error: 9.425022e-07
+  Max Relative Error:  8.237766e-08
+  Mean Relative Error: 8.237766e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Correct class very negative
+Logits shape: torch.Size([16, 50000]), Range: [-5.0000e+01, 9.4019e+00]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 6.281537e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  6.404144e-06
+  Mean Absolute Error: 6.404144e-06
+  Max Relative Error:  1.019519e-07
+  Mean Relative Error: 1.019519e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  2.589447e-06
+  Mean Absolute Error: 2.589447e-06
+  Max Relative Error:  4.122314e-08
+  Mean Relative Error: 4.122314e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Correct class very positive
+Logits shape: torch.Size([16, 50000]), Range: [-9.2905e+00, 5.0000e+01]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 0.000000e+00
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  0.000000e+00
+  Mean Absolute Error: 0.000000e+00
+  Max Relative Error:  0.000000e+00
+  Mean Relative Error: 0.000000e+00
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  0.000000e+00
+  Mean Absolute Error: 0.000000e+00
+  Max Relative Error:  0.000000e+00
+  Mean Relative Error: 0.000000e+00
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Gradient-like small logits
+Logits shape: torch.Size([16, 50000]), Range: [1.0002e-04, 1.0100e-02]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 1.082041e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  1.481455e-06
+  Mean Absolute Error: 1.481455e-06
+  Max Relative Error:  1.369130e-07
+  Mean Relative Error: 1.369130e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  4.258939e-07
+  Mean Absolute Error: 4.258939e-07
+  Max Relative Error:  3.936023e-08
+  Mean Relative Error: 3.936023e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Sum reduction
+Logits shape: torch.Size([16, 50000]), Range: [-2.3177e+01, 2.4223e+01]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: sum
+================================================================================
+Ground truth loss (fp64): 3.259584e+02
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  1.364235e-04
+  Mean Absolute Error: 1.364235e-04
+  Max Relative Error:  4.185304e-07
+  Mean Relative Error: 4.185304e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  1.435320e-05
+  Mean Absolute Error: 1.435320e-05
+  Max Relative Error:  4.403383e-08
+  Mean Relative Error: 4.403383e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: None reduction (element-wise)
+Logits shape: torch.Size([16, 50000]), Range: [-2.3802e+01, 2.4636e+01]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: none
+================================================================================
+Ground truth loss (fp64): 2.196047e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  1.016565e-05
+  Mean Absolute Error: 6.449632e-06
+  Max Relative Error:  5.843646e-07
+  Mean Relative Error: 3.121692e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  1.866333e-06
+  Mean Absolute Error: 5.825626e-07
+  Max Relative Error:  8.322454e-08
+  Mean Relative Error: 2.599210e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Alternating high/low confidence
+Logits shape: torch.Size([16, 50000]), Range: [-3.0000e+01, 3.0000e+01]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 2.047112e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  6.436984e-07
+  Mean Absolute Error: 6.436984e-07
+  Max Relative Error:  3.144422e-08
+  Mean Relative Error: 3.144422e-08
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  6.436984e-07
+  Mean Absolute Error: 6.436984e-07
+  Max Relative Error:  3.144422e-08
+  Mean Relative Error: 3.144422e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Exponential distribution
+Logits shape: torch.Size([16, 50000]), Range: [5.2278e-08, 4.8281e+01]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 3.457028e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  2.667357e-07
+  Mean Absolute Error: 2.667357e-07
+  Max Relative Error:  7.715751e-09
+  Mean Relative Error: 7.715751e-09
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  2.667357e-07
+  Mean Absolute Error: 2.667357e-07
+  Max Relative Error:  7.715751e-09
+  Mean Relative Error: 7.715751e-09
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Long sequence [2048]
+Logits shape: torch.Size([4, 2048, 50000]), Range: [-1.6938e+01, 1.7285e+01]
+Targets shape: torch.Size([4, 2048]), Unique classes: 7557
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 1.527083e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  3.036976e-06
+  Mean Absolute Error: 3.036976e-06
+  Max Relative Error:  1.988744e-07
+  Mean Relative Error: 1.988744e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  3.036976e-06
+  Mean Absolute Error: 3.036976e-06
+  Max Relative Error:  1.988744e-07
+  Mean Relative Error: 1.988744e-07
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Single sample
+Logits shape: torch.Size([1, 50000]), Range: [-1.9629e+01, 1.9494e+01]
+Targets shape: torch.Size([1]), Unique classes: 1
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 2.588407e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  7.284217e-06
+  Mean Absolute Error: 7.284217e-06
+  Max Relative Error:  2.814170e-07
+  Mean Relative Error: 2.814170e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  3.451775e-07
+  Mean Absolute Error: 3.451775e-07
+  Max Relative Error:  1.333552e-08
+  Mean Relative Error: 1.333552e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Sparse high logits
+Logits shape: torch.Size([16, 50000]), Range: [-1.0000e+01, 2.0000e+01]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 3.160944e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  2.913528e-08
+  Mean Absolute Error: 2.913528e-08
+  Max Relative Error:  9.217273e-10
+  Mean Relative Error: 9.217273e-10
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  2.913528e-08
+  Mean Absolute Error: 2.913528e-08
+  Max Relative Error:  9.217273e-10
+  Mean Relative Error: 9.217273e-10
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: All targets same class
+Logits shape: torch.Size([16, 50000]), Range: [-2.4769e+01, 2.3627e+01]
+Targets shape: torch.Size([16]), Unique classes: 1
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 2.210363e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  8.791074e-06
+  Mean Absolute Error: 8.791074e-06
+  Max Relative Error:  3.977208e-07
+  Mean Relative Error: 3.977208e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  3.069028e-06
+  Mean Absolute Error: 3.069028e-06
+  Max Relative Error:  1.388472e-07
+  Mean Relative Error: 1.388472e-07
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Near overflow [80,90]
+Logits shape: torch.Size([16, 50000]), Range: [8.0000e+01, 9.0000e+01]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 1.311370e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  7.861568e-07
+  Mean Absolute Error: 7.861568e-07
+  Max Relative Error:  5.994927e-08
+  Mean Relative Error: 5.994927e-08
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  1.121192e-06
+  Mean Absolute Error: 1.121192e-06
+  Max Relative Error:  8.549775e-08
+  Mean Relative Error: 8.549775e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Small logit differences (1e-6)
+Logits shape: torch.Size([16, 50000]), Range: [1.0000e+01, 1.0000e+01]
+Targets shape: torch.Size([16]), Unique classes: 16
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 1.081978e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  3.615890e-06
+  Mean Absolute Error: 3.615890e-06
+  Max Relative Error:  3.341926e-07
+  Mean Relative Error: 3.341926e-07
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  7.548674e-07
+  Mean Absolute Error: 7.548674e-07
+  Max Relative Error:  6.976736e-08
+  Mean Relative Error: 6.976736e-08
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+Test Case: Large batch [512]
+Logits shape: torch.Size([512, 50000]), Range: [-1.6069e+01, 1.6566e+01]
+Targets shape: torch.Size([512]), Unique classes: 511
+Reduction: mean
+================================================================================
+Ground truth loss (fp64): 1.518166e+01
+
+crossentropy-fp32-cpu:
+  Max Absolute Error:  4.268210e-07
+  Mean Absolute Error: 4.268210e-07
+  Max Relative Error:  2.811425e-08
+  Mean Relative Error: 2.811425e-08
+  Inf Count:           0
+  NaN Count:           0
+
+crossentropy-fp32-gpu:
+  Max Absolute Error:  4.341551e-06
+  Mean Absolute Error: 4.341551e-06
+  Max Relative Error:  2.859733e-07
+  Mean Relative Error: 2.859733e-07
+  Inf Count:           0
+  NaN Count:           0
+
+================================================================================
+SUMMARY
+================================================================================
+
+crossentropy-fp32-gpu:
+  Total test cases: 25
+  Max absolute error across all cases: 1.435320e-05
+  Min absolute error across all cases: 0.000000e+00
+  Avg absolute error across all cases: 2.004855e-06
+  Median absolute error: 1.170290e-06
+  Std absolute error: 2.910746e-06
+  95th percentile absolute error: 5.483773e-06
+  Max relative error across all cases: 2.859733e-07
+  Avg relative error across all cases: 6.495739e-08
+  Median relative error: 4.889717e-08
+  Avg of mean absolute errors: 1.953504e-06
+  Avg of mean relative errors: 6.266810e-08
+  Total Inf count: 0
+  Total NaN count: 0
+
+  Worst absolute error case: Sum reduction
+    Error: 1.435320e-05
+  Worst relative error case: Large batch [512]
+    Error: 2.859733e-07
+
+crossentropy-fp32-cpu:
+  Total test cases: 25
+  Max absolute error across all cases: 1.364235e-04
+  Min absolute error across all cases: 0.000000e+00
+  Avg absolute error across all cases: 8.972269e-06
+  Median absolute error: 1.481455e-06
+  Std absolute error: 2.633606e-05
+  95th percentile absolute error: 1.575710e-05
+  Max relative error across all cases: 1.499398e-06
+  Avg relative error across all cases: 2.097793e-07
+  Median relative error: 1.019519e-07
+  Avg of mean absolute errors: 8.823628e-06
+  Avg of mean relative errors: 1.988914e-07
+  Total Inf count: 0
+  Total NaN count: 0
+
+  Worst absolute error case: Sum reduction
+    Error: 1.364235e-04
+  Worst relative error case: Near fp32 precision limit
+    Error: 1.499398e-06
+
+================================================================================
+OVERALL METRICS - COMPARISON
+================================================================================
+
+Comparing 25 test cases
+
+--- Absolute Error Comparison ---
+CPU - Overall Max: 1.364235e-04, Overall Avg: 8.972269e-06
+GPU - Overall Max: 1.435320e-05, Overall Avg: 2.004855e-06
+Difference (GPU - CPU):
+  Max difference: 3.914730e-06
+  Mean difference: -6.967414e-06
+  Median difference: 0.000000e+00
+  GPU better: 11/25 cases
+  GPU worse: 3/25 cases
+  GPU equal: 11/25 cases
+
+--- Relative Error Comparison ---
+CPU - Overall Max: 1.499398e-06, Overall Avg: 2.097793e-07
+GPU - Overall Max: 2.859733e-07, Overall Avg: 6.495739e-08
+Difference (GPU - CPU):
+  Max difference: 2.578591e-07
+  Mean difference: -1.448219e-07
+
+--- Mean Error Comparison ---
+CPU - Avg of mean abs errors: 8.823628e-06
+GPU - Avg of mean abs errors: 1.953504e-06
+
+--- Numerical Stability ---
+CPU - Total Infs: 0, Total NaNs: 0
+GPU - Total Infs: 0, Total NaNs: 0
+
+--- Error Distribution (Max Absolute Errors) ---
+Threshold       CPU Count       GPU Count      
+< 1e-10         1               2              
+< 1e-09         1               2              
+< 1e-08         1               2              
+< 1e-07         2               3              
+< 1e-06         10              11             
+< 1e-05         22              24             
+< 1e-04         24              25             
+
+--- Overall Assessment ---
+✓ GPU implementation has LOWER average max absolute error by 77.65%
+= Both implementations have equal numerical stability
+
+Overall Precision Grade: POOR (max error: 1.364235e-04)
+
+================================================================================
+
+================================================================================
+Test completed at: 2026-01-04 17:24:17
+Results saved to: fp32_crossentropyloss.log
+================================================================================
