@@ -43,5 +43,6 @@ def caller(case: Case, dtype, device) -> Result:
 
     result = Result()
     input_tensor = case.t_input.to(device=torch_device, dtype=torch_dtype)
-    result.t_output = torch.nn.functional.softmax(input_tensor, dim=-1)
+    output_tensor = torch.nn.functional.softmax(input_tensor, dim=-1)
+    result.t_output = output_tensor.to(device='cpu')
     return result
